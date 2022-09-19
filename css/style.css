@@ -95,7 +95,8 @@ img {
     width: 100%;
     object-fit: cover;
 }
-nav{
+
+nav {
     background: var(--color-primary);
     width: 100vw;
     height: 4.5rem;
@@ -104,36 +105,43 @@ nav{
     z-index: 10;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
 }
-nav button{
+
+nav button {
     display: none;
 }
+
 .nav_container {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.avatar{
+
+.avatar {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
     overflow: hidden;
     border: 0.3rem solid var(--color-bg);
 }
-.nav_logo{
+
+.nav_logo {
     font-weight: 600;
     font-size: 1.2rem;
 }
-.nav_items{
+
+.nav_items {
     display: flex;
     align-items: center;
-    gap:4rem;
+    gap: 4rem;
 }
-.nav_profile{
+
+.nav_profile {
     position: relative;
     cursor: pointer;
 }
-.nav_profile ul{
+
+.nav_profile ul {
     position: absolute;
     top: 125%;
     right: 0;
@@ -144,18 +152,20 @@ nav button{
     opacity: 0;
     transition: var(--transition);
 }
-.nav_profile:hover > ul{
+
+.nav_profile:hover>ul {
     visibility: visible;
     opacity: 1;
 }
 
-.nav_profile ul li a{
+.nav_profile ul li a {
     padding: 1rem;
     background: var(--color-gray-900);
     display: block;
     width: 100%;
 }
-.nav_profile ul li:last-child a{
+
+.nav_profile ul li:last-child a {
     background: var(--color-red);
     color: var(--color-bg);
 }
