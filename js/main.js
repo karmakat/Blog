@@ -6,16 +6,16 @@ const closeNavBtn = document.querySelector('#close_nav-btn');
 
 const openNav = () =>{
     navItems.style.display = 'flex';
-    openNav.style.display = 'none';
-    closeBtn.style.display = 'inline-block';
+    openNavBtn.style.display = 'none';
+    closeNavBtn.style.display = 'inline-block';
 }
 
 // Close nav dropdown
 
 const closeNav = () =>{
     navItems.style.display = 'none';
-    openNav.style.display = 'inline-block';
-    closeBtn.style.display = 'none';
+    openNavBtn.style.display = 'inline-block';
+    closeNavBtn.style.display = 'none';
 }
 
 // Add event listener
