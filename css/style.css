@@ -34,7 +34,7 @@
     appearance: 0;
     list-style: none;
     text-decoration: none;
-
+    box-sizing: border-box;
 }
 
 body {
@@ -353,6 +353,53 @@ footer ul a:hover{
     place-content: center;
 }
 
+.form_section{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+.form_section-container{
+    width: var(--form-width);
+}
+.alert_message{
+    padding: 0.8rem 1.4rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-boder-radius-2);
+}
+.alert_message.error{
+    background: var(--color-red-light);
+    color: var(--color-red);
+}
+.alert_message.success{
+    background: var(--color-green-light);
+    color: var(--color-green);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.form_control{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+input, textarea, select{
+    padding: 0.8rem 1.4rem;
+    background-color: var(--color-gray-900);
+    border-radius: var(--card-boder-radius-2);
+    color: var(--color-white);
+}
+.form_section small{
+    margin-top: 1rem;
+    display: block;
+}
+.form_section small a{
+    color: var(--color-primary);
+}
+
+
+
 @media screen and (max-width:1024px) {
     .container{
         width: var(--container-width-md);
@@ -461,6 +508,9 @@ footer ul a:hover{
         background-color: transparent;
         padding: 0;
     }
+    .form_section-container{
+        padding: 0;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -491,5 +541,8 @@ footer ul a:hover{
     }
     .search_bar-container{
         width: 60%;
+    }
+    .form_section-container{
+        padding: 3rem;
     }
 }
