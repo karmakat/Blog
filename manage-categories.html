@@ -37,6 +37,12 @@
 
 <section class="dashboard">
     <div class="container dashboard_container">
+       <button class="sidebar_toggle hide_sidebar-btn">
+            <i class="icon-chevron-left"></i>
+        </button>
+        <button class="sidebar_toggle show_sidebar-btn">
+            <i class="icon-chevron-right"></i>
+        </button>
         <aside>
             <ul>
                 <li>
@@ -65,7 +71,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="manage-categories.html"><i class="icon-th"></i>
+                    <a href="manage-categories.html" class="active"><i class="icon-th"></i>
                         <h5>Manage Categories</h5>
                     </a>
                 </li>
@@ -85,17 +91,17 @@
                     <tr>
                         <td>Travel</td>
                         <td><a href="edit-category.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.html" class="btn sm">Delete</a></td>
+                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
-                        <td>Travel</td>
+                        <td>Wild  Life</td>
                         <td><a href="edit-category.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.html" class="btn sm">Delete</a></td>
+                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
-                        <td>Travel</td>
+                        <td>Music</td>
                         <td><a href="edit-category.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.html" class="btn sm">Delete</a></td>
+                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
                     </tr>
                     
                 </tbody>
@@ -163,5 +169,7 @@
         </div>
     </footer>
 
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/main.js"></script>
+    
 </section>
