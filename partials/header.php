@@ -24,7 +24,7 @@ require 'config/database.php';
                 <li><a href="<?= ROOT_URL?>about.php">About</a></li>
                 <li><a href="<?= ROOT_URL?>services.php">Services</a></li>
                 <li><a href="<?= ROOT_URL?>contact.php">Contact</a></li>
-                <!-- <li><a href="signin.html">Sign in</a></li> -->
+                <li><a href="<?= ROOT_URL?>signin.php">Sign in</a></li>
             </ul>
             <button id="open_nav-btn"><i class="icon-menu"></i></Menu></button>
             <button id="close_nav-btn"><i class="icon-close"></i></button>
