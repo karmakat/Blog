@@ -30,7 +30,7 @@ require 'config/database.php';
                         <img src="<?= ROOT_URL?>img/avatar.jpg" alt="">
                     </div>
                     <ul>
-                        <li><a href="<?= ROOT_URL?>admin/dashboard.php">Dashboard</a></li>
+                        <li><a href="<?= ROOT_URL?>admin/index.php">Dashboard</a></li>
                         <li><a href="<?= ROOT_URL?>logout.html">Log out</a></li>
                     </ul>
                 </li>

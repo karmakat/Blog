@@ -6,7 +6,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.php" class="active"><i class="icon-dashboard2"></i>
+                        <a href="index.php" class="active"><i class="icon-dashboard2"></i>
                             <h5>Manage Posts</h5>
                         </a>
                     </li>

@@ -21,18 +21,18 @@
                 <tbody>
                     <tr>
                         <td>Travel</td>
-                        <td><a href="edit-category.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
+                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
+                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Wild  Life</td>
-                        <td><a href="edit-category.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
+                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
+                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     <tr>
                         <td>Music</td>
-                        <td><a href="edit-category.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
+                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
+                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
                     </tr>
                     
                 </tbody>
