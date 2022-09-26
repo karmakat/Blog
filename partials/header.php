@@ -11,27 +11,20 @@ require 'config/database.php';
     <title>Responsive Multipage Blog Website</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <script src="../js/main.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
     <nav>
         <div class="container nav_container">
-            <a href="index.html" class="nav_logo">EGATOR</a>
+            <a href="http://localhost:4044" class="nav_logo">EGATOR</a>
             <ul class="nav_items">
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.htm">Contact</a></li>
+                <li><a href="<?= ROOT_URL?>blog.php">Blog</a></li>
+                <li><a href="<?= ROOT_URL?>about.php">About</a></li>
+                <li><a href="<?= ROOT_URL?>services.php">Services</a></li>
+                <li><a href="<?= ROOT_URL?>contact.php">Contact</a></li>
                 <!-- <li><a href="signin.html">Sign in</a></li> -->
-                <li class="nav_profile">
-                    <div class="avatar">
-                        <img src="img/avatar.jpg" alt="">
-                    </div>
-                    <ul>
-                        <li><a href="dashboard.html">Dashboard</a></li>
-                        <li><a href="logout.html">Log out</a></li>
-                    </ul>
-                </li>
             </ul>
             <button id="open_nav-btn"><i class="icon-menu"></i></Menu></button>
             <button id="close_nav-btn"><i class="icon-close"></i></button>
