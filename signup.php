@@ -18,18 +18,18 @@
             <div class="alert_message success">
                 <p>This is an error message</p>
             </div>
-            <form action="">
-                <input type="text" name="" placeholder="First Name">
-                <input type="text" name="" placeholder="Last Name">
-                <input type="text" name="" placeholder="Username">
-                <input type="email" name="" placeholder="Email">
-                <input type="password" name="" placeholder="Create Password">
-                <input type="password" name="" placeholder="Confirm Password">
+            <form action="<?=ROOT_URL?>processing/signup.process.php" enctype="multipart/form-data">
+                <input type="text" name="" placeholder="First Name" id="txtfirstname">
+                <input type="text" name="" placeholder="Last Name" id="txtlastname">
+                <input type="text" name="" placeholder="Username" id="txtusername">
+                <input type="email" name="" placeholder="Email" id="txtemail">
+                <input type="password" name="" placeholder="Create Password" id="txtpassword">
+                <input type="password" name="" placeholder="Confirm Password" id="txtconfirm">
                 <div class="form_control">
                     <label for="avatar">User Avatar</label>
                     <input type="file" name="" id="avatar">
                 </div>
-                <button type="submit" class="btn">Sign Up</button>
+                <button type="submit" class="btn" id="submit">Sign Up</button>
                 <small>Already have an account? <a href="signin.php">Sign In</a></small>
             </form>
         </div>
