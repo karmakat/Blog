@@ -1,6 +1,17 @@
 <?php
 session_start();
 require 'config/database.php';
+
+//get back form data if there was a registration error
+$firstname = $_SESSION['signup-data']['txtfirstname'] ?? null;
+$lastname = $_SESSION['signup-data']['txtlastname'] ?? null;
+$username = $_SESSION['signup-data']['txtusername'] ?? null;
+$email = $_SESSION['signup-data']['txtemail'] ?? null;
+$password = $_SESSION['signup-data']['txtpassword'] ?? null;
+$confirm = $_SESSION['signup-data']['txtconfirm'] ?? null;
+
+// delete signup data session
+unset($_SESSION['signup-data']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +39,10 @@ require 'config/database.php';
             </div>
             <?php endif ?>
             <form autocomplete="off" action="<?=ROOT_URL?>processing/signup.process.php" enctype="multipart/form-data" method="POST">
-                <input type="text" name="txtfirstname" placeholder="First Name" id="txtfirstname">
-                <input type="text" name="txtlastname" placeholder="Last Name" id="txtlastname">
-                <input type="text" name="txtusername" placeholder="Username" id="txtusername">
-                <input type="email" name="txtemail" placeholder="Email" id="txtemail">
+                <input type="text" name="txtfirstname" value="<?=$firstname?>" placeholder="First Name" id="txtfirstname">
+                <input type="text" name="txtlastname" value="<?=$lastname?>" placeholder="Last Name" id="txtlastname">
+                <input type="text" name="txtusername" value="<?=$username?>" placeholder="Username" id="txtusername">
+                <input type="email" name="txtemail" value="<?=$email?>" placeholder="Email" id="txtemail">
                 <input type="password" name="txtpassword" placeholder="Create Password" id="txtpassword">
                 <input type="password" name="txtconfirm" placeholder="Confirm Password" id="txtconfirm">
                 <div class="form_control">

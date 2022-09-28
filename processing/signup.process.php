@@ -8,7 +8,7 @@ try {
         $username = filter_var($_POST['txtusername'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $email = filter_var($_POST['txtemail'], FILTER_VALIDATE_EMAIL);
         $password = filter_var($_POST['txtpassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $confirim = filter_var($_POST['txtconfirm'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $confirm = filter_var($_POST['txtconfirm'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $avatar = $_FILES['avatar'];
 
         if (!$firstname) {
@@ -19,28 +19,24 @@ try {
             $_SESSION['signup'] = "Please enter your username";
         } elseif (!$email) {
             $_SESSION['signup'] = "Please enter your email";
-        } else if (mb_strlen($password) < 6) {
-			$errors[] = "Too short password(min 6)";
+        } else if (mb_strlen($password) < 4) {
+			$errors[] = "Too short password(min 4)";
 		} else if (!$avatar['name']) {
             $_SESSION['signup'] = "Please add avatar";
         } else {
-            if ($password != $confirm) {
+            if ($password !== $confirm) {
                 $_SESSION['signup'] = "Passwords do not match";
             } else {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                $q_username_check = "SELECT * FROM t_users WHERE username = ? OR email = ?";
-                $query = $db->prepare($q_username_check);
-                $query->execute([
-                    'username' => $username,
-                    'email' => $email
-                ]);
-                $result = $query->rowCount();
-                if ($result > 0) {
+                $user_check_query= "SELECT * FROM t_users WHERE username = '$username' OR email = '$email'";
+                $user_check_result = mysqli_query($connection, $user_check_query);
+                
+                if (mysqli_num_rows($user_check_result) > 0) {
                     $_SESSION['signup'] = 'Username or Email is already exist';
                 } else {
                     $time = time();
-                    $avatar_name = $time . $avatar_name['name'];
+                    $avatar_name = $time . $avatar['name'];
                     $avatar_tmp_name = $avatar['name'];
                     $avatar_destination_path = 'img/' . $avatar_name;
 
@@ -48,7 +44,7 @@ try {
                     $extension = explode('.', $avatar_name);
                     $extension = end($extension);
                     if (in_array($extension, $allowed_files)) {
-                        if ($avatar['size'] < 100000) {
+                        if ($avatar['size'] < 1000000) {
                             move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
                         } else {
                             $_SESSION['signup'] = "File size too big. Should be less than 1mb";
@@ -59,38 +55,24 @@ try {
                 }
             }
         }
-        if ($_SESSION['signup']) {
+        // Redirect back if there was any problem
+        if ($_SESSION['signup']?? null) {
             $_SESSION['signup-data'] = $_POST;
-            header('location:' . ROOT_URL . 'signup.php');
+            header('Location:' . ROOT_URL . 'signup.php');
             die();
         } else {
-            $is_admin = "yes";
-            $query = $db->prepare("INSERT INTO t_users (:firstname,lastname,username,email,password,avatar,is_admin)VALUES(:firstname, :lastname, :username,:email,:password,:avatar,:is_admin)");
-            $query->execute([
-                'firstname' => $firstname,
-                'lastname' => $lastname,
-                'username' => $username,
-                'email' => $email,
-                'password' => $hashed_password,
-                'avatar' => $avatar_name,
-                'is_admin' => $is_admin
-            ]);
-
-            // $q = $db->prepare("INSERT INTO t_users(user,mail,password)
-            // VALUES(:user, :mail, :password)");
-            // $q->execute([
-            // 	'user' => $username,
-            // 	'mail' => $mail,
-            // 	'password' => sha1($password)
-            // ]);
-            if ($query) {
-                $_SESSION['signup'] = "Registration successfull";
-                header('location'  . ROOT_URL . 'signin.php');
+            $insert_user_query = "INSERT INTO t_users SET firstname='$firstname',
+            lastname='$lastname', username='$username', password='$hashed_password'
+            avatar='$avatar_name', is_admin='0'";
+            $insert_user_result = mysqli_query($connection,$insert_user_query); 
+            
+            if (!mysqli_errno($connection)) {
+                $_SESSION['signup-success'] = "Registration successfull";
+                header('Location'  . ROOT_URL . 'signin.php');
                 die();
             }
         }
-    } else {
-    }
+    } 
 } catch (Exception $e) {
     echo 'Registration Error ' . $e->getMessage();
 }
