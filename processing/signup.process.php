@@ -56,7 +56,7 @@ try {
             }
         }
         // Redirect back if there was any problem
-        if ($_SESSION['signup']?? null) {
+        if ($_SESSION['signup'] ?? null) {
             $_SESSION['signup-data'] = $_POST;
             header('Location:' . ROOT_URL . 'signup.php');
             die();
