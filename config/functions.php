@@ -117,25 +117,13 @@ if (!function_exists('get_session')) {
     }
 }
 
-if (!function_exists('select_username_and_email')) {
-    function select_username_and_email($table,$field1,$field2,$value)
+if (!function_exists('find_user_by_id')) {
+    function find_user_by_id($id)
     {
         global $db;
         
-        $q = $db->prepare("SELECT * FROM $table WHERE $field1=? OR $field2 = ?");
-        $q->execute([$value,$value]);
-        $data = $q->rowCount();
-        $q->closeCursor();
-        return $data;       
-    }
-}
-if (!function_exists('select_all_from_user')) {
-    function select_all_from_user($table,$field1,$field2,$value)
-    {
-        global $db;
-        
-        $q = $db->prepare("SELECT * FROM $table WHERE $field1=? OR $field2 = ?");
-        $q->execute([$value]);
+        $q = $db->prepare("SELECT * FROM t_users WHERE id=?");
+        $q->execute([$id]);
         $data = $q->fetch(PDO::FETCH_OBJ);
         $q->closeCursor();
         return $data;       

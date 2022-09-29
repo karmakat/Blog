@@ -22,7 +22,7 @@ try {
 
             if($userHasBeenFound > 0){
                 $user_info  = $stmt->fetch(PDO::FETCH_OBJ);
-                $_SESSION['username'] = $user_info->username;
+                $_SESSION['id'] = $user_info->id;
                 include('config/guest_filter.php');
             }else{
                 set_flash('Invalid username, mail or password', 'error');
