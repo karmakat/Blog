@@ -1,4 +1,7 @@
-<?php include 'partials/header.php';?>
+<?php 
+require 'partials/header.php';
+require 'processing/dashboard.process.php';
+?>
     <section class="dashboard">
         <div class="container dashboard_container">
             <button class="sidebar_toggle hide_sidebar-btn">
