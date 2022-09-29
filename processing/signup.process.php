@@ -1,78 +1,96 @@
 <?php
 session_start();
-require '../config/database.php';
+require 'config/database.php';
+require 'config/functions.php';
 try {
     if (isset($_POST['submit'])) {
-        $firstname = filter_var($_POST['txtfirstname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $lastname = filter_var($_POST['txtlastname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $username = filter_var($_POST['txtusername'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $email = filter_var($_POST['txtemail'], FILTER_VALIDATE_EMAIL);
-        $password = filter_var($_POST['txtpassword'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $confirm = filter_var($_POST['txtconfirm'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $firstname = validate($_POST['txtfirstname']);
+        $lastname = validate($_POST['txtlastname']);
+        $username = validate($_POST['txtusername']);
+        $email = validate($_POST['txtemail']);
+        $password = validate($_POST['txtpassword']);
+        $confirm = validate($_POST['txtconfirm']);
         $avatar = $_FILES['avatar'];
 
-        if (!$firstname) {
-            $_SESSION['signup'] = "Please enter your First Name";
-        } elseif (!$lastname) {
-            $_SESSION['signup'] = "Please enter your Last Name";
-        } elseif (!$username) {
-            $_SESSION['signup'] = "Please enter your username";
-        } elseif (!$email) {
-            $_SESSION['signup'] = "Please enter your email";
-        } else if (mb_strlen($password) < 4) {
-			$errors[] = "Too short password(min 4)";
-		} else if (!$avatar['name']) {
-            $_SESSION['signup'] = "Please add avatar";
-        } else {
-            if ($password !== $confirm) {
-                $_SESSION['signup'] = "Passwords do not match";
+        if (
+            !empty($firstname) && !empty($username) &&
+            !empty($email) && !empty($password) &&
+            !empty($confirm)
+        ) {
+            $errors = [];
+
+            if (mb_strlen($username) < 3) {
+                $errors[] = $username . " is too short(min 3)";
+            }
+            if (mb_strlen($username) > 10) {
+                $errors[] = $username . " is too long(max 10)";
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors[] = $email . " is invalid";
+            }
+            if (mb_strlen($password) < 6) {
+                $errors[] = "Too short password(min 6)";
             } else {
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                $user_check_query= "SELECT * FROM t_users WHERE username = '$username' OR email = '$email'";
-                $user_check_result = mysqli_query($connection, $user_check_query);
-                
-                if (mysqli_num_rows($user_check_result) > 0) {
-                    $_SESSION['signup'] = 'Username or Email is already exist';
+                if ($password != $confirm) {
+                    $errors[] = "Differents passwords";
                 } else {
-                    $time = time();
-                    $avatar_name = $time . $avatar['name'];
-                    $avatar_tmp_name = $avatar['name'];
-                    $avatar_destination_path = 'img/' . $avatar_name;
-
-                    $allowed_files = ['png', 'jpg', 'jpeg'];
-                    $extension = explode('.', $avatar_name);
-                    $extension = end($extension);
-                    if (in_array($extension, $allowed_files)) {
-                        if ($avatar['size'] < 1000000) {
-                            move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
-                        } else {
-                            $_SESSION['signup'] = "File size too big. Should be less than 1mb";
-                        }
-                    } else {
-                        $_SESSION['signup'] = "File should be png, jpg or jpeg";
-                    }
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 }
             }
-        }
-        // Redirect back if there was any problem
-        if ($_SESSION['signup'] ?? null) {
-            $_SESSION['signup-data'] = $_POST;
-            header('Location:' . ROOT_URL . 'signup.php');
-            die();
-        } else {
-            $insert_user_query = "INSERT INTO t_users SET firstname='$firstname',
-            lastname='$lastname', username='$username', password='$hashed_password'
-            avatar='$avatar_name', is_admin='0'";
-            $insert_user_result = mysqli_query($connection,$insert_user_query); 
-            
-            if (!mysqli_errno($connection)) {
-                $_SESSION['signup-success'] = "Registration successfull";
-                header('Location'  . ROOT_URL . 'signin.php');
-                die();
+            if (is_already_in_use('username', $username, 't_users')) {
+                $errors[] = $username . "is already in use";
             }
+            if (is_already_in_use('email', $email, 't_users')) {
+                $errors[] = $email . "is already in use";
+            }
+            if (empty($avatar)) {
+                $errors[] = "Your avatar is required";
+            } else {
+                $time = time();
+                $avatar_name = $time . $avatar['name'];
+                $avatar_tmp_name = $avatar['name'];
+                $avatar_destination_path = 'img/' . $avatar_name;
+
+                $allowed_files = ['png', 'jpg', 'jpeg'];
+                $extension = explode('.', $avatar_name);
+                $extension = end($extension);
+                if (in_array($extension, $allowed_files)) {
+                    if ($avatar['size'] < 1000000) {
+                        move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
+                    } else {
+                        $errors[] = "File size too big. Should be less than 1mb";
+                    }
+                } else {
+                    $errors[] = "File should be png, jpg or jpeg";
+                }
+            }
+            if (count($errors) == 0) {
+                $is_admin = 1;
+                $stmt = $db->prepare("INSERT INTO t_users(firstname,lastname,username,email,password,avatar,is_admin)
+			    VALUES(:firstname,:lastname,:username,:email,:password,:avatar,:is_admin)");
+			    $stmt->execute([
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'username' => $username,
+                    'email' => $email,
+                    'password' => $hashed_password,
+                    'avatar' => $avatar_name,
+                    'is_admin' => $is_admin
+			    ]);
+
+                set_flash("<strong>".$username."</strong>, now you can login", "success");
+
+                redirect('signin.php');
+            } else {
+                save_input_data();
+            }
+        } else {
+            $errors[] = "All fields are required";
+            save_input_data();
         }
-    } 
+    }else{
+        clear_input_data();
+    }
 } catch (Exception $e) {
     echo 'Registration Error ' . $e->getMessage();
 }
