@@ -34,7 +34,7 @@ try {
                 if ($password != $confirm) {
                     $errors[] = "Differents passwords";
                 } else {
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                 }
             }
             if (is_already_in_use('username', $username, 't_users')) {
@@ -46,22 +46,19 @@ try {
             if (empty($avatar)) {
                 $errors[] = "Your avatar is required";
             } else {
-                $time = time();
-                $avatar_name = $time . $avatar['name'];
-                $avatar_tmp_name = $avatar['name'];
-                $avatar_destination_path = 'img/' . $avatar_name;
+                $content_dir = "img";
 
-                $allowed_files = ['png', 'jpg', 'jpeg'];
-                $extension = explode('.', $avatar_name);
-                $extension = end($extension);
-                if (in_array($extension, $allowed_files)) {
-                    if ($avatar['size'] < 1000000) {
-                        move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
-                    } else {
-                        $errors[] = "File size too big. Should be less than 1mb";
-                    }
-                } else {
-                    $errors[] = "File should be png, jpg or jpeg";
+                $tmp_file = $_FILES['avatar']['tmp_name'];
+                if (!is_uploaded_file($tmp_file)) {
+                    $errors [] = "File not found";
+                }
+                $type_file = $_FILES['avatar']['type'];
+                if (!strstr($type_file, 'jpeg') && !strstr($type_file, 'png')) {
+                    $errors[] = "This file is not an image";
+                }
+                $avatar_name = time() . '.jpg';
+                if (!move_uploaded_file($tmp_file, $content_dir . $avatar_name)) {
+                    $errors[] = "Can not copy the file";
                 }
             }
             if (count($errors) == 0) {
