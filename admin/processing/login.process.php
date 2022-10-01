@@ -25,8 +25,8 @@ try {
                 if(password_verify($password,$user_password)){
                     $_SESSION['id'] = $query_result->id;
                     $_SESSION['username'] = $query_result->username;
-                    $_SESSION['is_admin'] = $query_result->is_admin;
-                    guest_filter($directory, 'dashboard');
+                    $_SESSION['level'] = $query_result->level;
+                    guest_filter('dashboard');
                     
                 }
             }else{

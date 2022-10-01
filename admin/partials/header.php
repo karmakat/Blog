@@ -34,7 +34,7 @@ require 'config/functions.php';
                     </div>
                     <ul>
                         <li><a href="<?= ROOT_URL?>admin/dashboard.php">Dashboard</a></li>
-                        <li><a href="<?= ROOT_URL?>logout.php">Log out</a></li>
+                        <li><a href="<?= ROOT_URL?>signout.php">Log out</a></li>
                     </ul>
                 </li>
             </ul>

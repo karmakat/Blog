@@ -145,8 +145,8 @@ if (!function_exists('is_logged_in')) {
 if (!function_exists('redirect_guest_filter')) {
     function guest_filter($page)
     {
-        if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
-            header('Location: '. $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username']);
+        if (isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['level'])) {
+            header('Location: '. $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
             exit();
         }
     }
