@@ -141,5 +141,14 @@ if (!function_exists('find_user_by_id')) {
        return isset($_SESSION['id']) || isset($_SESSION['id']); 
     }
 }
+if (!function_exists('redirect_guest_filter')) {
+    function redirect_guest_filter($page)
+    {
+        if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+            header('Location: '. $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username']);
+            exit();
+        }
+    }
+}
 
 

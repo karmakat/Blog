@@ -22,6 +22,7 @@ require 'config/functions.php';
         <div class="container nav_container">
             <a href="http://localhost:4044" class="nav_logo">EGATOR</a>
             <ul class="nav_items">
+                <li><a href="<?= ROOT_URL?>home.php">Home</a></li>
                 <li><a href="<?= ROOT_URL?>blog.php">Blog</a></li>
                 <li><a href="<?= ROOT_URL?>about.php">About</a></li>
                 <li><a href="<?= ROOT_URL?>services.php">Services</a></li>
@@ -32,8 +33,8 @@ require 'config/functions.php';
                         <img src="<?= ROOT_URL?>img/avatar.jpg" alt="">
                     </div>
                     <ul>
-                        <li><a href="<?= ROOT_URL?>admin/index.php">Dashboard</a></li>
-                        <li><a href="<?= ROOT_URL?>logout.html">Log out</a></li>
+                        <li><a href="<?= ROOT_URL?>admin/dashboard.php">Dashboard</a></li>
+                        <li><a href="<?= ROOT_URL?>logout.php">Log out</a></li>
                     </ul>
                 </li>
             </ul>

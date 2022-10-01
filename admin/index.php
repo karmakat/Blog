@@ -1,51 +1,29 @@
-<?php 
-require 'partials/header.php';
-require 'processing/dashboard.process.php';
-?>
-    <section class="dashboard">
-        <div class="container dashboard_container">
-            <button class="sidebar_toggle hide_sidebar-btn">
-                <i class="icon-chevron-left"></i>
-            </button>
-            <button class="sidebar_toggle show_sidebar-btn">
-                <i class="icon-chevron-right"></i>
-            </button>
-            <?php require 'partials/aside.php'?>
-            <main>
-                <h2>Manage Posts</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                            <td>Health</td>
-                            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                            <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        </tr>
-                    <tbody>
-                        <tr>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                            <td>Health</td>
-                            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                            <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        </tr>
-                    <tbody>
-                        <tr>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                            <td>Health</td>
-                            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                            <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        </tr>
+<?php require 'processing/login.process.php';?>
+<!DOCTYPE html>
+<html lang="en">
 
-                    </tbody>
-                </table>
-            </main>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Multipage Blog Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+</head>
+
+<body>
+    <section class="form_section">
+        <div class="container form_section-container">
+            <h2>Sign In</h2>
+            <?php require 'config/_flash.php';?>
+            <form autocomplete="off" method="POST">
+                <input type="text" name="txtauth" value="<?=get_input_data('txtauth')?>" placeholder="Username or Email">
+                <input type="password" name="txtpassword" placeholder="Password">
+                <button type="submit" name="login" class="btn">Sign In</button>
+                <small>Don't have an account? <a href="signup.php">Sign Up</a></small>
+            </form>
         </div>
     </section>
+</body>
+
+</html>

@@ -121,25 +121,33 @@ if (!function_exists('find_user_by_id')) {
     function find_user_by_id($id)
     {
         global $db;
-        
+
         $q = $db->prepare("SELECT * FROM t_users WHERE id=?");
         $q->execute([$id]);
         $data = $q->fetch(PDO::FETCH_OBJ);
         $q->closeCursor();
-        return $data;       
+        return $data;
     }
 }
- if(!function_exists('get_avatar_url')){
-     function get_avatar_url($mail){
-       return "http://gravatar.com/avatar/". md5(strtolower(trim(e($mail))));
-     }
- }
+if (!function_exists('get_avatar_url')) {
+    function get_avatar_url($mail)
+    {
+        return "http://gravatar.com/avatar/" . md5(strtolower(trim(e($mail))));
+    }
+}
 
- if (!function_exists('is_logged_in')) {
+if (!function_exists('is_logged_in')) {
     function is_logged_in()
     {
-       return isset($_SESSION['id']) || isset($_SESSION['id']); 
+        return isset($_SESSION['id']) || isset($_SESSION['id']);
     }
 }
-
-
+if (!function_exists('redirect_guest_filter')) {
+    function guest_filter($page)
+    {
+        if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+            header('Location: '. $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username']);
+            exit();
+        }
+    }
+}

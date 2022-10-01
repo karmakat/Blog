@@ -10,12 +10,12 @@ try {
         $password = validate($_POST['txtpassword']);
 
         if(!empty($auth) && !empty($password)){
-            $stmt = $db->prepare("SELECT id FROM t_users WHERE username = :auth OR email = :auth");
+            $stmt = $db->prepare("SELECT id FROM t_admins WHERE username = :auth OR email = :auth");
             $stmt->execute(['auth' => $auth]);
             $userHasBeenFound = $stmt->rowCount();
 
             if($userHasBeenFound > 0){
-                $select_all = "SELECT * FROM t_users WHERE username = :auth OR email= :auth";
+                $select_all = "SELECT * FROM t_admins WHERE username = :auth OR email= :auth";
                 $query_select = $db->prepare($select_all);
                 $query_select->execute(['auth' => $auth]);
                 $query_result = $query_select->fetch(PDO::FETCH_OBJ);
@@ -26,7 +26,8 @@ try {
                     $_SESSION['id'] = $query_result->id;
                     $_SESSION['username'] = $query_result->username;
                     $_SESSION['is_admin'] = $query_result->is_admin;
-                    redirect_guest_filter('home');
+                    guest_filter($directory, 'dashboard');
+                    
                 }
             }else{
                 set_flash('Invalid username, mail or password', 'error');

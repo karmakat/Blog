@@ -28,7 +28,7 @@
                     <input type="file" name="avatar" id="avatar">
                 </div>
                 <button type="submit" class="btn" id="submit" name="submit">Sign Up</button>
-                <small>Already have an account? <a href="signin.php">Sign In</a></small>
+                <small>Already have an account? <a href="index.php">Sign In</a></small>
             </form>
         </div>
     </section>

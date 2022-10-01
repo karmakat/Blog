@@ -46,7 +46,7 @@ try {
             if (empty($avatar)) {
                 $errors[] = "Your avatar is required";
             } else {
-                $content_dir = "img";
+                $content_dir = "img/users_img/";
 
                 $tmp_file = $_FILES['avatar']['tmp_name'];
                 if (!is_uploaded_file($tmp_file)) {
@@ -57,14 +57,13 @@ try {
                     $errors[] = "This file is not an image";
                 }
                 $avatar_name = time() . '.jpg';
-                if (!move_uploaded_file($tmp_file, $content_dir . $avatar_name)) {
+                if (!move_uploaded_file($tmp_file, $content_dir.$avatar_name)) {
                     $errors[] = "Can not copy the file";
                 }
             }
             if (count($errors) == 0) {
-                $is_admin = 1;
-                $stmt = $db->prepare("INSERT INTO t_users(firstname,lastname,username,email,password,avatar,is_admin)
-			    VALUES(:firstname,:lastname,:username,:email,:password,:avatar,:is_admin)");
+                $stmt = $db->prepare("INSERT INTO t_users(firstname,lastname,username,email,password,avatar)
+			    VALUES(:firstname,:lastname,:username,:email,:password,:avatar)");
 			    $stmt->execute([
                     'firstname' => $firstname,
                     'lastname' => $lastname,
@@ -72,12 +71,11 @@ try {
                     'email' => $email,
                     'password' => $hashed_password,
                     'avatar' => $avatar_name,
-                    'is_admin' => $is_admin
 			    ]);
 
                 set_flash("<strong>".$username."</strong>, now you can login", "success");
 
-                redirect('signin.php');
+                redirect('index.php');
             } else {
                 save_input_data();
             }
