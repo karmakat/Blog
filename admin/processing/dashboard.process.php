@@ -5,7 +5,7 @@ if(!empty($_GET['id']) || !empty($_GET['username'])){
         redirect(ROOT_URL.'signin.php');
     }
 }else{
-    header('Location: index.php?id='.$_SESSION['id'].'username='.$_SESSION['username']);
+    header('Location: dashboard.php?id='.$_SESSION['id'].'username='.$_SESSION['username']);
     exit();
 }
 
