@@ -1,4 +1,7 @@
-<?php include 'partials/header.php'?>
+<?php 
+require 'partials/header.php';
+require 'processing/category-posts.process.php';
+?>
 
     <header class="category_title">
         <h2>Category Title</h2>
@@ -163,7 +166,7 @@
         </div>
     </section>
 
-    <?php include 'partials/footer.php'?>
+    <?php require 'partials/footer.php'?>
 </body>
 
 </html>
