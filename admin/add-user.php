@@ -1,4 +1,7 @@
-<?php include 'partials/header.php'?>
+<?php 
+require 'partials/header.php';
+require 'processing/add-user.process.php';
+?>
     <section class="form_section">
         <div class="container form_section-container">
             <h2>Add User</h2>
