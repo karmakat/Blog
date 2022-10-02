@@ -32,16 +32,17 @@ if (isset($_GET['id']) == $_SESSION['id']) {
                         $errors[] = "The new password must be different";
                     } else {
                         $active_status = $query_result->status;
+                        $hashed_password = password_hash($new, PASSWORD_BCRYPT);
                         if($active_status == 1){
                             $update_password = "UPDATE t_admins SET password = ? WHERE id = ?";
                             $stmt = $db->prepare($update_password);
-                            $stmt->execute([$new,$_SESSION['id']]);
+                            $stmt->execute([$hashed_password,$_SESSION['id']]);
                             redirect('index.php');
                         }else{
                             $active_status = 1;
                             $update_password = "UPDATE t_admins SET password = ?, status = ? WHERE id = ?";
                             $stmt = $db->prepare($update_password);
-                            $stmt->execute([$update_password,$active_status, $_SESSION['id']]);
+                            $stmt->execute([$hashed_password,$active_status, $_SESSION['id']]);
                             redirect('index.php');
                         }
                     }

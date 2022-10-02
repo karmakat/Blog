@@ -23,7 +23,7 @@ try {
 
                 // Verify the password
                 if (password_verify($password, $user_password)) {
-                    if ($query_result->status !== 1) {
+                    if ($query_result->status == 0) {
                         $_SESSION['id'] = $query_result->id;
                         $_SESSION['username'] = $query_result->username;
                         $_SESSION['level'] = $query_result->level;
@@ -34,7 +34,9 @@ try {
                         $_SESSION['id'] = $query_result->id;
                         $_SESSION['username'] = $query_result->username;
                         $_SESSION['level'] = $query_result->level;
-                        guest_filter('dashboard');
+                        $page = 'dashboard';
+                        header('Location: '.$page.'.php?id=' . $_SESSION['id'].'username='. $_SESSION['username'].'level='.$_SESSION['level']);
+                        exit();
                     }
                 }
             } else {
