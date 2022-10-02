@@ -10,6 +10,7 @@
                             <h5>Manage Posts</h5>
                         </a>
                     </li>
+                    
                     <li>
                         <a href="add-user.php"><i class="icon-user-plus"></i>
                             <h5>Add Users</h5>
