@@ -1,4 +1,7 @@
-<?php include 'partials/header.php'?>
+<?php 
+require 'partials/header.php';
+require 'processing/blog.process.php';
+?>
 
     <section class="search_bar">
         <form action="" class="container search_bar-container">
