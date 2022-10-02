@@ -145,6 +145,7 @@ if (!function_exists('is_logged_in')) {
 if (!function_exists('redirect_guest_filter')) {
     function redirect_guest_filter($page)
     {
+        auth_filter();
         if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             header('Location: ' . $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username']);
             exit();
@@ -161,6 +162,14 @@ if (!function_exists('redirect_the_user')) {
             }
         } else {
             redirect_guest_filter($to);
+        }
+    }
+}
+if(!function_exists('auth_filter')){
+    function auth_filter(){
+        if(!isset($_SESSION['id']) && !isset($_SESSION['username'])){
+            header('Location:index.php');
+            exit();
         }
     }
 }

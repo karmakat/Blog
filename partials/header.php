@@ -12,8 +12,8 @@ session_start();
     <title>Responsive Multipage Blog Website</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <script src="../js/main.js"></script>
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>

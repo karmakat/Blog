@@ -13,7 +13,7 @@ require 'config/functions.php';
     <title>Responsive Multipage Blog Website</title>
     <link rel="stylesheet" href="<?= ROOT_URL?>css/style.css">
     <link rel="stylesheet" href="<?= ROOT_URL?>fonts/icomoon/style.css">
-    <script src="<?= ROOT_URL?>js/main.js"></script>
+    <script src="<?= ROOT_URL?>js/ajax.js"></script>
     <script src="<?= ROOT_URL?>js/jquery-3.3.1.min.js"></script>
 </head>
 

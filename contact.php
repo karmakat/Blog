@@ -4,7 +4,7 @@ require 'processing/contact.processing.php';
 ?>
 
     <section class="empty_page">
-        <h1>Contact Page</h1>
+        <h1>Contact Page <?= $_SESSION['id']?></h1>
     </section>
 
     <?php require 'partials/footer.php'?>
