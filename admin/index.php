@@ -22,6 +22,9 @@
                 <input type="text" name="txtauth" value="<?=get_input_data('txtauth')?>" placeholder="Username or Email">
                 <input type="password" name="txtpassword" placeholder="Password">
                 <button type="submit" name="login" class="btn">Sign In</button>
+                <small>If is your first login, you must update your password
+                    inother to activate your admin account. Please click on the following link
+                    and change your password. <a href="update-password.php">Update Password</a></small>
             </form>
         </div>
     </section>
