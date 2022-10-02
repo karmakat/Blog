@@ -1,18 +1,24 @@
-<?php include 'partials/header.php';?>
+<?php 
+require 'partials/header.php';
+require 'processing/edit-category.process.php';
+?>
 
     <section class="form_section">
         <div class="container form_section-container">
             <h2>Edit Category</h2>
-
-            <form action="">
-                <input type="text" name="" placeholder="Title">
-                <textarea placeholder="Description"></textarea>
-                <button type="submit" class="btn">Update Category</button>
+            <?php 
+            require 'config/_errors.php';
+            require 'config/_flash.php';
+            ?>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <input type="text" name="txttitle" value="<?=$_GET['title']?>" placeholder="Title">
+                <textarea placeholder="Description" name="txtdescription"></textarea>
+                <button type="submit" class="btn" name="update">Update Category</button>
             </form>
         </div>
     </section>
 
-    <?php include "../../blog/partials/footer.php";?>
+    <?php require "../../blog/partials/footer.php";?>
 </body>
 
 </html>

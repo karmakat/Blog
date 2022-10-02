@@ -9,7 +9,7 @@ require 'processing/add-category.process.php';
             <?php 
             require 'config/_errors.php';
             require 'config/_flash.php';
-            ;?>
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="text" name="txttitle" placeholder="Title" value="<?=get_input_data('txttitle')?>">
                 <textarea placeholder="Description" name="txtdescription"></textarea>
