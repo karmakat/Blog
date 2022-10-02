@@ -1,4 +1,10 @@
-<?php include 'partials/header.php';?>
+<?php 
+require 'partials/header.php';
+redirect_the_user('manage-categories');
+$query = "SELECT * FROM t_categories";
+$stmt = $db->prepare($query);
+$stmt->execute();
+?>
 <section class="dashboard">
     <div class="container dashboard_container">
        <button class="sidebar_toggle hide_sidebar-btn">
@@ -19,22 +25,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    while($data = $stmt->fetch(PDO::FETCH_OBJ)){
+                    ?>
                     <tr>
-                        <td>Travel</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Wild  Life</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>Music</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
+                        <td><?=$data->title?></td>
+                        <td><a href="edit-category.php?title=<?=$data->title?>" class="btn sm">Edit</a></td>
+                        <td><a href="processing/delete-category.process.php?title=<?=$data->title?>" class="btn sm danger">Delete</a></td>
                     </tr>
                     
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </main>
