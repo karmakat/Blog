@@ -1,4 +1,7 @@
-<?php include 'partials/header.php'?>
+<?php 
+require 'partials/header.php';
+require 'processing/home.process.php';
+?>
 
     <section class="featured">
         <div class="container featured_container">
