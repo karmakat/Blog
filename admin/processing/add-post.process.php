@@ -28,7 +28,7 @@ if (isset($_POST['add'])) {
         if (empty($thumbmail)) {
             $errors[] = "Your thumbmail is required";
         } else {
-            $content_dir = "img/posts_img";
+            $content_dir = "../img/posts_img/";
 
             $tmp_file = $_FILES['thumbmail']['tmp_name'];
             if (!is_uploaded_file($tmp_file)) {
@@ -49,7 +49,8 @@ if (isset($_POST['add'])) {
                 $stmt->execute([$title,$body,$category,$created_by,$thumbmail_name]);
 
                 set_flash($created_by." your post was been addeed", "success");
-                clear_input_data();
+                header('Location: dashboard.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
+                exit();
             }
         }
     } else {
