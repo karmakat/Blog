@@ -33,17 +33,16 @@ require 'processing/home.process.php';
 
     <section class="posts">
         <div class="container posts_container">
+            <?php while($data_home = $stmt->fetch(PDO::FETCH_OBJ)){?>
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/2.jpg" alt="">
+                    <img src="img/posts_img/<?=$data_home->thumbmail?>" alt="">
                 </div>
                 <div class="post_info">
-                    <a href="" class="category_button">Wild Life</a>
-                    <h3 class="post_title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
+                    <a href="" class="category_button"><?=$data_home->category?></a>
+                    <h3 class="post_title"><?=$data_home->title?></h3>
                     <p class="post_body">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ratione obcaecati aperiam
-                        soluta expedita cumque non ea sapiente adipisci? Sequi delectus dicta perspiciatis, nobis cumque
-                        mollitia officiis incidunt quam aut!
+                    <?=substr($data_home->body, 0,200).'...'?>
                     </p>
                 </div>
                 <div class="post_author">
@@ -51,131 +50,13 @@ require 'processing/home.process.php';
                         <img src="img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
-                        <h5>By: Hnz Mas</h5>
-                        <small>July 13, 2020 - 10:05</small>
+                        <h5>By: <?=$data_home->created_by?></h5>
+                        <small><?=$data_home->created_at?></small>
                     </div>
                 </div>
             </article>
+            <?php } ?>
 
-            <article class="post">
-                <div class="post_thumbmail">
-                    <img src="img/3.jpg" alt="">
-                </div>
-                <div class="post_info">
-                    <a href="category-posts.html" class="category_button">Wild Life</a>
-                    <h3 class="post_title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
-                    <p class="post_body">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ratione obcaecati aperiam
-                        soluta expedita cumque non ea sapiente adipisci? Sequi delectus dicta perspiciatis, nobis cumque
-                        mollitia officiis incidunt quam aut!
-                    </p>
-                </div>
-                <div class="post_author">
-                    <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
-                    </div>
-                    <div class="post_author-info">
-                        <h5>By: Hnz Mas</h5>
-                        <small>July 13, 2020 - 10:05</small>
-                    </div>
-                </div>
-            </article>
-
-            <article class="post">
-                <div class="post_thumbmail">
-                    <img src="img/4.jpg" alt="">
-                </div>
-                <div class="post_info">
-                    <a href="category-posts.html" class="category_button">Wild Life</a>
-                    <h3 class="post_title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
-                    <p class="post_body">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ratione obcaecati aperiam
-                        soluta expedita cumque non ea sapiente adipisci? Sequi delectus dicta perspiciatis, nobis cumque
-                        mollitia officiis incidunt quam aut!
-                    </p>
-                </div>
-                <div class="post_author">
-                    <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
-                    </div>
-                    <div class="post_author-info">
-                        <h5>By: Hnz Mas</h5>
-                        <small>July 13, 2020 - 10:05</small>
-                    </div>
-                </div>
-            </article>
-
-            <article class="post">
-                <div class="post_thumbmail">
-                    <img src="img/5.jpg" alt="">
-                </div>
-                <div class="post_info">
-                    <a href="category-posts.html" class="category_button">Wild Life</a>
-                    <h3 class="post_title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
-                    <p class="post_body">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ratione obcaecati aperiam
-                        soluta expedita cumque non ea sapiente adipisci? Sequi delectus dicta perspiciatis, nobis cumque
-                        mollitia officiis incidunt quam aut!
-                    </p>
-                </div>
-                <div class="post_author">
-                    <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
-                    </div>
-                    <div class="post_author-info">
-                        <h5>By: Hnz Mas</h5>
-                        <small>July 13, 2020 - 10:05</small>
-                    </div>
-                </div>
-            </article>
-
-            <article class="post">
-                <div class="post_thumbmail">
-                    <img src="img/6.jpg" alt="">
-                </div>
-                <div class="post_info">
-                    <a href="category-posts.html" class="category_button">Wild Life</a>
-                    <h3 class="post_title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
-                    <p class="post_body">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ratione obcaecati aperiam
-                        soluta expedita cumque non ea sapiente adipisci? Sequi delectus dicta perspiciatis, nobis cumque
-                        mollitia officiis incidunt quam aut!
-                    </p>
-                </div>
-                <div class="post_author">
-                    <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
-                    </div>
-                    <div class="post_author-info">
-                        <h5>By: Hnz Mas</h5>
-                        <small>July 13, 2020 - 10:05</small>
-                    </div>
-                </div>
-            </article>
-
-            <article class="post">
-                <div class="post_thumbmail">
-                    <img src="img/1.jpg" alt="">
-                </div>
-                <div class="post_info">
-                    <a href="category-posts.html" class="category_button">Wild Life</a>
-                    <h3 class="post_title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
-                    <p class="post_body">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ratione obcaecati aperiam
-                        soluta expedita cumque non ea sapiente adipisci? Sequi delectus dicta perspiciatis, nobis cumque
-                        mollitia officiis incidunt quam aut!
-                    </p>
-                </div>
-                <div class="post_author">
-                    <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
-                    </div>
-                    <div class="post_author-info">
-                        <h5>By: Hnz Mas</h5>
-                        <small>July 13, 2020 - 10:05</small>
-                    </div>
-                </div>
-            </article>
         </div>
     </section>
 
