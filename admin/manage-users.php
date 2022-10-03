@@ -1,4 +1,10 @@
-<?php include 'partials/header.php';?>
+<?php 
+require 'partials/header.php';
+redirect_the_user('manage-users');
+$query = "SELECT * FROM t_admins";
+$stmt = $db->prepare($query);
+$stmt->execute();
+?>
 
 <section class="dashboard">
     <div class="container dashboard_container">
@@ -22,28 +28,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                    while($data = $stmt->fetch(PDO::FETCH_OBJ)){
+                    ?>
                     <tr>
-                        <td>Ernest</td>
-                        <td>rs46</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        <td>Yes</td>
+                        <td><?=$data->firstname.' '.$data->lastname?></td>
+                        <td><?=$data->username?></td>
+                        <td><a href="edit-user.php?username=<?=$data->username?>" class="btn sm">Edit</a></td>
+                        <td><a href="delete-user.php?username=<?=$data->username?>" class="btn sm danger">Delete</a></td>
+                        <td><?php
+                        if($data->level == 1){
+                            echo 'Yes';
+                        }else{
+                            echo 'No';
+                        }
+                        ?></td>
                     </tr>
-                    <tr>
-                        <td>Ernest</td>
-                        <td>rs46</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Ernest</td>
-                        <td>rs46</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        <td>Yes</td>
-                    </tr>
-                    
+                <?php
+                    }
+                ?>
                 </tbody>
             </table>
         </main>
