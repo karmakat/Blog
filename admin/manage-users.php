@@ -35,7 +35,7 @@ $stmt->execute();
                         <td><?=$data->firstname.' '.$data->lastname?></td>
                         <td><?=$data->username?></td>
                         <td><a href="edit-user.php?username=<?=$data->username?>" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.php?username=<?=$data->username?>" class="btn sm danger">Delete</a></td>
+                        <td><a href="processing/delete-user.process.php?username=<?=$data->username?>" class="btn sm danger">Delete</a></td>
                         <td><?php
                         if($data->level == 1){
                             echo 'Yes';
