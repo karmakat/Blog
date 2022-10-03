@@ -30,6 +30,7 @@ try {
                     $add_category_query->execute(array($title, $description, $created_by));
 
                     set_flash($title . " was added as a category", "success");
+                    clear_input_data();
                 }
             }
         } else {

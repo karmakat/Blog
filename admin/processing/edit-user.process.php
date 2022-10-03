@@ -42,6 +42,7 @@ if (isset($_GET['username'])) {
                     );
 
                     $update_user_query->execute([$firstname, $lastname, $level, $updated_by, $data->username]);
+                    clear_input_data();
 
                     header('Location: manage-users.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
                     exit();
