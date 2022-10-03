@@ -14,7 +14,6 @@ if (isset($_GET['title'])) {
             $title = validate($_POST['txttitle']);
             $description = validate($_POST['txtdescription']);
             $updated_by = $_SESSION['id'];
-            $updated_at = time();
             $errors = [];
             if (!empty($title) && !empty($description)) {
                 if (mb_strlen($title) > 100) {
@@ -23,31 +22,29 @@ if (isset($_GET['title'])) {
                 if (mb_strlen($description) > 255) {
                     $errors[] = "Long description (min 255)";
                 } else {
-                    $q = $db->prepare("SELECT id FROM t_categories WHERE title=?");
+                    $q = $db->prepare("SELECT * FROM t_categories WHERE title=?");
                     $q->execute([$title]);
-                    $data = $q->rowCount();
-                    if ($data > 0) {
-                        $errors[] = $title . " already exist as a category";
-                    } else {
-                        $data = $q->fetch(PDO::FETCH_OBJ);
-                        $id = $data->id;
-                        $add_category_query = $db->prepare(
-                            "UPDATE t_categories SET title = :title,description = :description,
-                            updated_at = :updated_at, updated_by =:updated_by
-                            WHERE id = :id"
-                        );
-                        $add_category_query->execute([
-                            'title' => $title, 'description' => $description,
-                            'updated_at' => $updated_at, 'updated_by' => $updated_by,
-                            'id' => $id
-                        ]);
-                        header('Location: manage-categories.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
-                        exit();
-                    }
+                    $data = $q->fetch(PDO::FETCH_OBJ);
+                    $id = $data->id;
+                    echo "<scripti>alert(".$id.")</script>";
+                   
+
+                    $update_category_query = $db->prepare(
+                        "UPDATE t_categories SET title = ?,description = ?,
+                        updated_at = now(), updated_by =? WHERE id = ?"
+                    );
+
+                    $update_category_query->execute([$title,$description,$updated_by,$id]);
+
+                    header('Location: manage-categories.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+                    exit();
                 }
             } else {
-                clear_input_data();
+                $errors [] = "All fields are required";
+                save_input_data();
             }
+        }else{
+            clear_input_data();
         }
     }
 } else {
