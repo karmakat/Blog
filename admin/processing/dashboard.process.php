@@ -9,4 +9,9 @@ if(!empty($_GET['id']) || !empty($_GET['username'] || !empty($_GET['level']))){
     exit();
 }
 
+// Select all posts
+$query = "SELECT * FROM t_posts";
+$stmt = $db->prepare($query);
+$stmt->execute();
+
 ?>

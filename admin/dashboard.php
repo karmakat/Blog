@@ -23,28 +23,14 @@ require 'processing/dashboard.process.php';
                         </tr>
                     </thead>
                     <tbody>
+                        <?php while($data = $stmt->fetch(PDO::FETCH_OBJ)){?>
                         <tr>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                            <td>Health</td>
-                            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                            <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
+                            <td><?=$data->title?></td>
+                            <td><?=$data->category?></td>
+                            <td><a href="edit-post.php?title=<?=$data->title?>" class="btn sm">Edit</a></td>
+                            <td><a href="processing/delete-post.process.php?title=<?=$data->title?>" class="btn sm danger">Delete</a></td>
                         </tr>
-                    <tbody>
-                        <tr>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                            <td>Health</td>
-                            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                            <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        </tr>
-                    <tbody>
-                        <tr>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                            <td>Health</td>
-                            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                            <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                        </tr>
-
-                    </tbody>
+                        <?php } ?>
                 </table>
             </main>
         </div>
