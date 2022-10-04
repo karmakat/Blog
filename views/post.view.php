@@ -1,34 +1,36 @@
-<?php include '../partials/header.php'?>
+<?php 
+require '../partials/header.php';
+require '../processing/post.process.php';
+if($data_posts){
+    $title_post = $data_posts->title;
+    $body_post = $data_posts->body;
+    $category_post = $data_posts->category; 
+    $created_at_post = $data_posts->created_at;
+    $created_by_post = $data_posts->created_by;
+    $img_post = $data_posts->thumbmail;
+}else{
+    redirect_the_user('home');
+}
+
+?>
 
     <section class="singlepost">
         <div class="container singlepost_container">
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+            <h2><?=$title_post?></h2>
             <div class="post_author">
                 <div class="post_author-avatar">
                     <img src="../img/avatar.jpg" alt="">
                 </div>
                 <div class="post_author-info">
-                    <h5>By: Bethel Kami</h5>
-                    <small>August 20, 2020 - 10:00</small>
+                    <h5><?=$created_by_post?></h5>
+                    <small><?=$created_at_post?></small>
                 </div>
             </div>
 
             <div class="singlepost_thumbmail">
-                <img src="../img/6.jpg" alt="">
+                <img src="../img/posts_img/<?=$img_post?>" alt="">
             </div>
-        
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maiores? Ex nisi odio perferendis nemo
-            nam sunt exercitationem, fuga quo quidem veritatis? Assumenda nulla eos eius facilis dolore facere maxime?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maiores? Ex nisi odio perferendis nemo
-            nam sunt exercitationem, fuga quo quidem veritatis? Assumenda nulla eos eius facilis dolore facere maxime?
-        </p>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maiores? Ex nisi odio perferendis nemo
-            nam sunt exercitationem, fuga quo quidem veritatis? Assumenda nulla eos eius facilis dolore facere maxime?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maiores? Ex nisi odio perferendis nemo
-            nam sunt exercitationem, fuga quo quidem veritatis? Assumenda nulla eos eius facilis dolore facere maxime?
-        </p>
+        <p><?=$body_post?></p>
     </div>
     </section>
 

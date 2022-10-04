@@ -9,9 +9,9 @@ require '../processing/home.process.php';
                 <img src="../img/1.jpg" alt="">
             </div>
             <div class="post_info">
-                <a href="category-posts.html" class="category_button">Wild Life</a>
+                <a href="category-posts.view.php" class="category_button">Wild Life</a>
                 <h2 class="post_title">
-                    <a href="../post.html">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a>
+                    <a href="post.view.php">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a>
                 </h2>
                 <p class="post_body">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus necessitatibus ratione
@@ -44,7 +44,11 @@ require '../processing/home.process.php';
                 </div>
                 <div class="post_info">
                     <a href="category-posts.view.php?category=<?=$data_home->category?>" class="category_button"><?=$data_home->category?></a>
-                    <h3 class="post_title"><?=$data_home->title?></h3>
+                    <h3 class="post_title">
+                        <a href="post.view.php?title=<?=$data_home->title?>">
+                            <?=$data_home->title?>
+                        </a>
+                    </h3>
                     <p class="post_body">
                     <?=substr($data_home->body, 0,200).'...'?>
                     </p>
