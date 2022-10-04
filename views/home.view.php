@@ -33,7 +33,11 @@ require '../processing/home.process.php';
 
     <section class="posts">
         <div class="container posts_container">
-            <?php while($data_home = $stmt->fetch(PDO::FETCH_OBJ)){?>
+            <?php 
+           
+            while($data_home = $stmt->fetch(PDO::FETCH_OBJ)){
+                for ($i=0; $i < 4; $i++) { 
+                ?>
             <article class="post">
                 <div class="post_thumbmail">
                     <img src="../img/posts_img/<?=$data_home->thumbmail?>" alt="">
@@ -55,7 +59,7 @@ require '../processing/home.process.php';
                     </div>
                 </div>
             </article>
-            <?php } ?>
+            <?php } } ?>
 
         </div>
     </section>
