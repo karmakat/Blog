@@ -36,16 +36,16 @@ try {
                     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                 }
             }
-            if (is_already_in_use('username', $username, 't_users')) {
-                $errors[] = $username . "is already in use";
+            if (is_already_in_use('username', $username, 't_admins')) {
+                $errors[] = $username . " is already in use";
             }
-            if (is_already_in_use('email', $email, 't_users')) {
-                $errors[] = $email . "is already in use";
+            if (is_already_in_use('email', $email, 't_admins')) {
+                $errors[] = $email . " is already in use";
             }
             if (empty($avatar)) {
                 $errors[] = "Your avatar is required";
             } else {
-                $content_dir = "img/";
+                $content_dir = "../../img/admins_img/";
 
                 $tmp_file = $_FILES['avatar']['tmp_name'];
                 if (!is_uploaded_file($tmp_file)) {

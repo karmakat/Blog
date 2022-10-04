@@ -31,8 +31,8 @@ require '../processing/header.process.php';
                         <img src="<?= ROOT_URL ?>admin/img/<?=$query_result->avatar?>" alt="">
                     </div>
                     <ul>
-                        <li><a href="<?= ROOT_URL ?>admin/dashboard.php">Dashboard</a></li>
-                        <li><a href="<?= ROOT_URL ?>views/signout.view.php">Log out</a></li>
+                        <li><a href="<?= ROOT_URL ?>admin/views/dashboard.view.php">Dashboard</a></li>
+                        <li><a href="<?= ROOT_URL ?>admin/views/signout.view.php">Log out</a></li>
                     </ul>
                 </li>
             </ul>
