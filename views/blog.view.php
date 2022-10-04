@@ -1,6 +1,6 @@
 <?php 
-require 'partials/header.php';
-require 'processing/blog.process.php';
+require '../partials/header.php';
+require '../processing/blog.process.php';
 ?>
 
     <section class="search_bar">
@@ -19,7 +19,7 @@ require 'processing/blog.process.php';
         <div class="container posts_container">
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/2.jpg" alt="">
+                    <img src="../img/2.jpg" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button">Wild Life</a>
@@ -32,7 +32,7 @@ require 'processing/blog.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: Hnz Mas</h5>
@@ -43,7 +43,7 @@ require 'processing/blog.process.php';
 
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/3.jpg" alt="">
+                    <img src="../img/3.jpg" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button">Wild Life</a>
@@ -56,7 +56,7 @@ require 'processing/blog.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: Hnz Mas</h5>
@@ -67,7 +67,7 @@ require 'processing/blog.process.php';
 
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/4.jpg" alt="">
+                    <img src="../img/4.jpg" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button">Wild Life</a>
@@ -80,7 +80,7 @@ require 'processing/blog.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: Hnz Mas</h5>
@@ -91,7 +91,7 @@ require 'processing/blog.process.php';
 
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/5.jpg" alt="">
+                    <img src="../img/5.jpg" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button">Wild Life</a>
@@ -104,7 +104,7 @@ require 'processing/blog.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: Hnz Mas</h5>
@@ -115,7 +115,7 @@ require 'processing/blog.process.php';
 
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/6.jpg" alt="">
+                    <img src="../img/6.jpg" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button">Wild Life</a>
@@ -128,7 +128,7 @@ require 'processing/blog.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: Hnz Mas</h5>
@@ -139,7 +139,7 @@ require 'processing/blog.process.php';
 
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/1.jpg" alt="">
+                    <img src="../img/1.jpg" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button">Wild Life</a>
@@ -152,7 +152,7 @@ require 'processing/blog.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: Hnz Mas</h5>
@@ -174,7 +174,7 @@ require 'processing/blog.process.php';
         </div>
     </section>
 
-    <?php include 'partials/footer.php'?>
+    <?php require '../partials/footer.php'?>
 </body>
 
 </html>

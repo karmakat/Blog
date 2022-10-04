@@ -1,9 +1,10 @@
 <?php 
 require '../partials/header.php';
-require '../processing/about.process.php';
+require '../processing/contact.processing.php';
 ?>
+
     <section class="empty_page">
-        <h1>About Page</h1>
+        <h1>Contact Page</h1>
     </section>
 
     <?php require '../partials/footer.php'?>
