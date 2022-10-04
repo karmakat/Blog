@@ -36,7 +36,7 @@ require '../processing/home.process.php';
             <?php 
            
             while($data_home = $stmt->fetch(PDO::FETCH_OBJ)){
-                for ($i=0; $i < 4; $i++) { 
+                for ($i=0; $i < 3; $i++) { 
                 ?>
             <article class="post">
                 <div class="post_thumbmail">
