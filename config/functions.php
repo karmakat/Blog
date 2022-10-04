@@ -118,11 +118,11 @@ if (!function_exists('get_session')) {
 }
 
 if (!function_exists('find_user_by_id')) {
-    function find_user_by_id($id)
+    function find_user_by_id($id,$table)
     {
         global $db;
 
-        $q = $db->prepare("SELECT * FROM t_users WHERE id=?");
+        $q = $db->prepare("SELECT * FROM $table WHERE id=?");
         $q->execute([$id]);
         $data = $q->fetch(PDO::FETCH_OBJ);
         $q->closeCursor();
@@ -156,9 +156,12 @@ if (!function_exists('redirect_the_user')) {
     function redirect_the_user($to)
     {
         if (!empty($_GET['id']) || !empty($_GET['username'])) {
-            $username  = find_user_by_id($_SESSION['id']);
+            $username  = find_user_by_id($_SESSION['id'], 't_users');
             if (!$username) {
-                redirect('index.php');
+                $admin_username = find_user_by_id($_SESSION['id'],'t_admins');
+                if(!$admin_username){
+                    redirect('login.view.php');
+                }
             }
         } else {
             redirect_guest_filter($to);

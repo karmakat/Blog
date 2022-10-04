@@ -20,11 +20,11 @@ require '../processing/header.process.php';
         <div class="container nav_container">
             <a href="http://localhost:4044" class="nav_logo">EGATOR</a>
             <ul class="nav_items">
-                <li><a href="<?= ROOT_URL ?>home.view.php">Home</a></li>
-                <li><a href="<?= ROOT_URL ?>blog.view.php">Blog</a></li>
-                <li><a href="<?= ROOT_URL ?>about.view.php">About</a></li>
-                <li><a href="<?= ROOT_URL ?>services.view.php">Services</a></li>
-                <li><a href="<?= ROOT_URL ?>contact.view.php">Contact</a></li>
+                <li><a href="<?= ROOT_URL ?>views/home.view.php">Home</a></li>
+                <li><a href="<?= ROOT_URL ?>views/blog.view.php">Blog</a></li>
+                <li><a href="<?= ROOT_URL ?>views/about.view.php">About</a></li>
+                <li><a href="<?= ROOT_URL ?>views/services.view.php">Services</a></li>
+                <li><a href="<?= ROOT_URL ?>views/contact.view.php">Contact</a></li>
                 <!-- <li><a href="signin.html">Sign in</a></li> -->
                 <li class="nav_profile">
                     <div class="avatar">
