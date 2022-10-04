@@ -28,7 +28,7 @@ require '../processing/header.process.php';
                 <!-- <li><a href="signin.html">Sign in</a></li> -->
                 <li class="nav_profile">
                     <div class="avatar">
-                        <img src="<?= ROOT_URL ?>admin/img/<?=$query_result->avatar?>" alt="">
+                        <img src="<?= ROOT_URL ?>img/admins_img/<?=$query_result->avatar?>" alt="">
                     </div>
                     <ul>
                         <li><a href="<?= ROOT_URL ?>admin/views/dashboard.view.php">Dashboard</a></li>
