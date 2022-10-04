@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'config/database.php';
-require 'config/functions.php';
+require '../config/database.php';
+require '../config/functions.php';
 try {
     if (isset($_POST['submit'])) {
         $firstname = validate($_POST['txtfirstname']);
@@ -38,15 +38,15 @@ try {
                 }
             }
             if (is_already_in_use('username', $username, 't_users')) {
-                $errors[] = $username . "is already in use";
+                $errors[] = $username . " is already in use";
             }
             if (is_already_in_use('email', $email, 't_users')) {
-                $errors[] = $email . "is already in use";
+                $errors[] = $email . " is already in use";
             }
             if (empty($avatar)) {
                 $errors[] = "Your avatar is required";
             } else {
-                $content_dir = "img/users_img/";
+                $content_dir = "../img/users_img/";
 
                 $tmp_file = $_FILES['avatar']['tmp_name'];
                 if (!is_uploaded_file($tmp_file)) {
@@ -57,25 +57,25 @@ try {
                     $errors[] = "This file is not an image";
                 }
                 $avatar_name = time() . '.jpg';
-                if (!move_uploaded_file($tmp_file, $content_dir.$avatar_name)) {
-                    $errors[] = "Can not copy the file";
-                }
             }
             if (count($errors) == 0) {
-                $stmt = $db->prepare("INSERT INTO t_users(firstname,lastname,username,email,password,avatar)
-			    VALUES(:firstname,:lastname,:username,:email,:password,:avatar)");
-			    $stmt->execute([
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'username' => $username,
-                    'email' => $email,
-                    'password' => $hashed_password,
-                    'avatar' => $avatar_name,
-			    ]);
-
+                if(!move_uploaded_file($tmp_file, $content_dir.$avatar_name)){
+                    $errors [] = "Can not copy the file";
+                }else{
+                    $stmt = $db->prepare("INSERT INTO t_users(firstname,lastname,username,email,password,avatar)
+                    VALUES(:firstname,:lastname,:username,:email,:password,:avatar)");
+                    $stmt->execute([
+                        'firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'username' => $username,
+                        'email' => $email,
+                        'password' => $hashed_password,
+                        'avatar' => $avatar_name,
+                    ]);
+                }
                 set_flash("<strong>".$username."</strong>, now you can login", "success");
 
-                redirect('index.php');
+                redirect('login.view.php');
             } else {
                 save_input_data();
             }

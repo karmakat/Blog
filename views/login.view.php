@@ -20,7 +20,7 @@
                 <input type="text" name="txtauth" value="<?=get_input_data('txtauth')?>" placeholder="Username or Email">
                 <input type="password" name="txtpassword" placeholder="Password">
                 <button type="submit" name="login" class="btn">Sign In</button>
-                <small>Don't have an account? <a href="signup.php">Sign Up</a></small>
+                <small>Don't have an account? <a href="signup.view.php">Sign Up</a></small>
             </form>
         </div>
     </section>

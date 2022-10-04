@@ -49,34 +49,34 @@ try {
 
                 $tmp_file = $_FILES['avatar']['tmp_name'];
                 if (!is_uploaded_file($tmp_file)) {
-                    $errors [] = "File not found";
+                    $errors[] = "File not found";
                 }
                 $type_file = $_FILES['avatar']['type'];
                 if (!strstr($type_file, 'jpeg') && !strstr($type_file, 'png')) {
                     $errors[] = "This file is not an image";
                 }
                 $avatar_name = time() . '.jpg';
-                if (!move_uploaded_file($tmp_file, $content_dir.$avatar_name)) {
-                    $errors[] = "Can not copy the file";
-                }
             }
             if (count($errors) == 0) {
-                $status = 0;
-                $stmt = $db->prepare("INSERT INTO t_admins(firstname,lastname,username,email,password,level,avatar,status)
-			    VALUES(:firstname,:lastname,:username,:email,:password,:level,:avatar,:status)");
-			    $stmt->execute([
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'username' => $username,
-                    'email' => $email,
-                    'password' => $hashed_password,
-                    'level' => $level,
-                    'avatar' => $avatar_name,
-                    'status' => $status
-			    ]);
-
-                set_flash("<strong>".$username."</strong>, was been added", "success");
-                clear_input_data();
+                if (!move_uploaded_file($tmp_file, $content_dir . $avatar_name)) {
+                    $errors[] = "Can not copy the file";
+                } else {
+                    $status = 0;
+                    $stmt = $db->prepare("INSERT INTO t_admins(firstname,lastname,username,email,password,level,avatar,status)
+			        VALUES(:firstname,:lastname,:username,:email,:password,:level,:avatar,:status)");
+                    $stmt->execute([
+                        'firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'username' => $username,
+                        'email' => $email,
+                        'password' => $hashed_password,
+                        'level' => $level,
+                        'avatar' => $avatar_name,
+                        'status' => $status
+                    ]);
+                    set_flash("<strong>" . $username . "</strong>, was been added", "success");
+                    clear_input_data();
+                }
             } else {
                 save_input_data();
             }
@@ -84,10 +84,9 @@ try {
             $errors[] = "All fields are required";
             save_input_data();
         }
-    }else{
+    } else {
         clear_input_data();
     }
 } catch (Exception $e) {
     echo 'Registration Error ' . $e->getMessage();
 }
-?>

@@ -24,7 +24,7 @@ try {
 
                 $errors = [];
 
-                if (!empty($title) && !empty($body) && !empty($category) && !empty($thumbmail)) {
+                if (!empty($title) && !empty($body) && !empty($category)) {
                     if (mb_strlen($title) > 100) {
                         $errors[] = "Too long title(max 100)";
                     }
@@ -37,7 +37,7 @@ try {
                     if (empty($thumbmail)) {
                         $errors[] = "Your thumbmail is required";
                     } else {
-                        $content_dir = "../img/posts_img/";
+                        $content_dir = "../../img/posts_img/";
 
                         $tmp_file = $_FILES['thumbmail']['tmp_name'];
                         if (!is_uploaded_file($tmp_file)) {
@@ -48,15 +48,15 @@ try {
                             $errors[] = "This file is not an image";
                         }
                         $thumbmail_name = time() . '.jpg';
-                        if (!move_uploaded_file($tmp_file, $content_dir . $thumbmail_name)) {
-                            $errors[] = "Can not copy the file";
-                        }
                         if (count($errors) == 0) {
-                            $update_query = "UPDATE t_posts SET  title = ?,body = ?,category = ?,
-                            updated_at = now(),updated_by = ?,thumbmail = ? WHERE id = ?";
-                            $stmt = $db->prepare($update_query);
-                            $stmt->execute([$title, $body, $category, $updated_by, $thumbmail_name,$id]);
-
+                            if (!move_uploaded_file($tmp_file, $content_dir . $thumbmail_name)) {
+                                $errors[] = "Can not copy the file";
+                            } else {
+                                $update_query = "UPDATE t_posts SET  title = ?,body = ?,category = ?,
+                                updated_at = now(),updated_by = ?,thumbmail = ? WHERE id = ?";
+                                $stmt = $db->prepare($update_query);
+                                $stmt->execute([$title, $body, $category, $updated_by, $thumbmail_name, $id]);
+                            }
                             set_flash($updated_by . " your post was been updated", "success");
                         }
                     }

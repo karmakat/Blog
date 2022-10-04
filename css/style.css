@@ -189,8 +189,7 @@ nav button {
 }
 
 .post_thumbmail {
-    border-radius: var(--card-boder-radius-5) 0;
-    border: 1rem solid var(--color-gray-900);
+    border-radius: var(--card-boder-radius-1);
     overflow: hidden;
     margin-bottom: 1.6rem;
 }
