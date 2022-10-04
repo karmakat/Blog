@@ -38,7 +38,7 @@ if (isset($_GET['id']) == $_SESSION['id']) {
                             $stmt = $db->prepare($update_password);
                             $stmt->execute([$hashed_password,$_SESSION['id']]);
                             clear_input_data();
-                            redirect('index.php');
+                            redirect('login.view.php');
                         }else{
                             $active_status = 1;
                             $update_password = "UPDATE t_admins SET password = ?, status = ? WHERE id = ?";
@@ -62,5 +62,5 @@ if (isset($_GET['id']) == $_SESSION['id']) {
     }
 } else {
     $page = 'update-password';
-    header('Location: ' . $page . '.php?id=' . $_SESSION['id']);
+    header('Location: ' . $page . '.view.php?id=' . $_SESSION['id']);
 }

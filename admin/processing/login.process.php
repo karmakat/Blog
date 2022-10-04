@@ -29,7 +29,7 @@ try {
                         $_SESSION['level'] = $query_result->level;
 
                         $page = 'update-password';
-                        header('Location: '. $page . '.php?id=' . $_SESSION['id']);
+                        header('Location: '. $page . '.view.php?id=' . $_SESSION['id']);
                     } else if($query_result->status == 1){
                         $_SESSION['id'] = $query_result->id;
                         $_SESSION['username'] = $query_result->username;
