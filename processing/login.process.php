@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'config/database.php';
-require 'config/functions.php';
+require '../config/database.php';
+require '../config/functions.php';
 
 try {
     if(isset($_POST['login'])){

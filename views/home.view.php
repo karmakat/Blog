@@ -1,17 +1,17 @@
 <?php 
-require 'partials/header.php';
-require 'processing/home.process.php';
+require '../partials/header.php';
+require '../processing/home.process.php';
 ?>
 
     <section class="featured">
         <div class="container featured_container">
             <div class="post_thumbmail">
-                <img src="img/1.jpg" alt="">
+                <img src="../img/1.jpg" alt="">
             </div>
             <div class="post_info">
                 <a href="category-posts.html" class="category_button">Wild Life</a>
                 <h2 class="post_title">
-                    <a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a>
+                    <a href="../post.html">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</a>
                 </h2>
                 <p class="post_body">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus necessitatibus ratione
@@ -20,7 +20,7 @@ require 'processing/home.process.php';
                 </p>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By Trez Kit</h5>
@@ -36,7 +36,7 @@ require 'processing/home.process.php';
             <?php while($data_home = $stmt->fetch(PDO::FETCH_OBJ)){?>
             <article class="post">
                 <div class="post_thumbmail">
-                    <img src="img/posts_img/<?=$data_home->thumbmail?>" alt="">
+                    <img src="../img/posts_img/<?=$data_home->thumbmail?>" alt="">
                 </div>
                 <div class="post_info">
                     <a href="" class="category_button"><?=$data_home->category?></a>
@@ -47,7 +47,7 @@ require 'processing/home.process.php';
                 </div>
                 <div class="post_author">
                     <div class="post_author-avatar">
-                        <img src="img/avatar.jpg" alt="">
+                        <img src="../img/avatar.jpg" alt="">
                     </div>
                     <div class="post_author-info">
                         <h5>By: <?=$data_home->created_by?></h5>
@@ -71,7 +71,7 @@ require 'processing/home.process.php';
         </div>
     </section>
 
-    <?php include 'partials/footer.php'?>
+    <?php include '../partials/footer.php'?>
 </body>
 
 </html>

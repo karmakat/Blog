@@ -1,5 +1,5 @@
 <?php
-require 'config/database.php';
+require '../config/database.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -10,10 +10,10 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Multipage Blog Website</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <script src="js/ajax.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <script src="../js/ajax.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>

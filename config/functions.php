@@ -147,7 +147,7 @@ if (!function_exists('redirect_guest_filter')) {
     {
         auth_filter();
         if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
-            header('Location: ' . $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username']);
+            header('Location: ' . $page . '.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username']);
             exit();
         }
     }
