@@ -68,11 +68,11 @@ try {
                 clear_input_data();
             }
         } else {
-            header('Location: dashboard.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+            header('Location: ../views/dashboard.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
             exit();
         }
     } else {
-        header('Location: dashboard.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+        header('Location: ../dashboard.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
         exit();
     }
 } catch (Exception $e) {

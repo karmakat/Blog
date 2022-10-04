@@ -7,7 +7,7 @@ if (isset($_GET['title'])) {
     $stmt->execute([$title]);
     $data = $stmt->rowCount();
     if ($data == 0) {
-        header('Location: manage-categories.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+        header('Location: manage-categories.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
         exit();
     } else {
         if (isset($_POST['update'])) {
@@ -37,7 +37,7 @@ if (isset($_GET['title'])) {
                     $update_category_query->execute([$title,$description,$updated_by,$id]);
                     clear_input_data();
 
-                    header('Location: manage-categories.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+                    header('Location: ../views/manage-categories.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
                     exit();
                 }
             } else {
@@ -49,6 +49,6 @@ if (isset($_GET['title'])) {
         }
     }
 } else {
-    header('Location: manage-categories.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+    header('Location: ../views/manage-categories.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
     exit();
 }

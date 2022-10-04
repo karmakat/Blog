@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'config/database.php';
-require 'config/functions.php';
+require '../config/database.php';
+require '../config/functions.php';
 
 $select_all = "SELECT * FROM t_admins WHERE id = :id";
 $query_select = $db->prepare($select_all);

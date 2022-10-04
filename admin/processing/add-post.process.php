@@ -49,7 +49,7 @@ if (isset($_POST['add'])) {
                     $stmt->execute([$title, $body, $category, $created_by, $thumbmail_name]);
 
                     set_flash($created_by . " your post was been addeed", "success");
-                    header('Location: dashboard.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+                    header('Location: views/dashboard.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
                     exit();
                 }
             }

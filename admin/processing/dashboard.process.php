@@ -5,7 +5,7 @@ if(!empty($_GET['id']) || !empty($_GET['username'] || !empty($_GET['level']))){
         redirect('index.php');
     }
 }else{
-    header('Location: dashboard.php?id='.$_SESSION['id'].'username='.$_SESSION['username']);
+    header('Location: views/dashboard.view.php?id='.$_SESSION['id'].'username='.$_SESSION['username']);
     exit();
 }
 

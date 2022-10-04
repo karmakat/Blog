@@ -11,18 +11,18 @@ if(isset($_GET['username'])){
     $stmt->execute([$username]);
     $data = $stmt->rowCount();
     if($data <= 0){
-        header('Location: ../manage-userss.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
+        header('Location: ../views/manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
         exit();
     }else{
         $delete_query = "DELETE FROM t_admins WHERE username = ?";
         $stmt_query = $db->prepare($delete_query);
         $stmt_query->execute([$username]);
 
-        header('Location: ../manage-users.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
+        header('Location: ../views/manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
         exit();
 
     }
 }else{
-    header('Location: ../manage-users.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
+    header('Location: ../views/manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
     exit();
 }

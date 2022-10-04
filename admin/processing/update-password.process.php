@@ -1,8 +1,8 @@
 <?php
 session_start();
-require 'config/database.php';
-require 'config/_flash.php';
-require 'config/functions.php';
+require '../config/database.php';
+require '../config/_flash.php';
+require '../config/functions.php';
 
 if (isset($_GET['id']) == $_SESSION['id']) {
     $errors = [];
@@ -45,7 +45,7 @@ if (isset($_GET['id']) == $_SESSION['id']) {
                             $stmt = $db->prepare($update_password);
                             $stmt->execute([$hashed_password,$active_status, $_SESSION['id']]);
                             clear_input_data();
-                            redirect('index.php');
+                            redirect('login.view.php');
                         }
                     }
                 } else {

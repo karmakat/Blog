@@ -1,5 +1,5 @@
 <?php
-require 'processing/header.process.php';
+require '../processing/header.process.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +20,11 @@ require 'processing/header.process.php';
         <div class="container nav_container">
             <a href="http://localhost:4044" class="nav_logo">EGATOR</a>
             <ul class="nav_items">
-                <li><a href="<?= ROOT_URL ?>home.php">Home</a></li>
-                <li><a href="<?= ROOT_URL ?>blog.php">Blog</a></li>
-                <li><a href="<?= ROOT_URL ?>about.php">About</a></li>
-                <li><a href="<?= ROOT_URL ?>services.php">Services</a></li>
-                <li><a href="<?= ROOT_URL ?>contact.php">Contact</a></li>
+                <li><a href="<?= ROOT_URL ?>home.view.php">Home</a></li>
+                <li><a href="<?= ROOT_URL ?>blog.view.php">Blog</a></li>
+                <li><a href="<?= ROOT_URL ?>about.view.php">About</a></li>
+                <li><a href="<?= ROOT_URL ?>services.view.php">Services</a></li>
+                <li><a href="<?= ROOT_URL ?>contact.view.php">Contact</a></li>
                 <!-- <li><a href="signin.html">Sign in</a></li> -->
                 <li class="nav_profile">
                     <div class="avatar">
@@ -32,7 +32,7 @@ require 'processing/header.process.php';
                     </div>
                     <ul>
                         <li><a href="<?= ROOT_URL ?>admin/dashboard.php">Dashboard</a></li>
-                        <li><a href="<?= ROOT_URL ?>signout.php">Log out</a></li>
+                        <li><a href="<?= ROOT_URL ?>views/signout.view.php">Log out</a></li>
                     </ul>
                 </li>
             </ul>

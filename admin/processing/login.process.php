@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'config/database.php';
-require 'config/functions.php';
+require '../config/database.php';
+require '../config/functions.php';
 
 try {
     if (isset($_POST['login'])) {
@@ -35,7 +35,7 @@ try {
                         $_SESSION['username'] = $query_result->username;
                         $_SESSION['level'] = $query_result->level;
                         $page = 'dashboard';
-                        header('Location: '.$page.'.php?id=' . $_SESSION['id'].'username='. $_SESSION['username'].'level='.$_SESSION['level']);
+                        header('Location: '.$page.'.view.php?id=' . $_SESSION['id'].'username='. $_SESSION['username'].'level='.$_SESSION['level']);
                         exit();
                     }
                 }

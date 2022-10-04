@@ -13,7 +13,7 @@ if (isset($_GET['username'])) {
 
     // If the username doesn't exist, the usr will be redirected
     if (!$data) {
-        header('Location: manage-users.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+        header('Location: ../views/manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
         exit();
     } else {
 
@@ -44,7 +44,7 @@ if (isset($_GET['username'])) {
                     $update_user_query->execute([$firstname, $lastname, $level, $updated_by, $data->username]);
                     clear_input_data();
 
-                    header('Location: manage-users.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+                    header('Location: manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
                     exit();
                 } else {
                     $errors[] = "All fields are required";
@@ -56,6 +56,6 @@ if (isset($_GET['username'])) {
         }
     }
 } else {
-    header('Location: manage-users.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+    header('Location: ../views/manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
     exit();
 }

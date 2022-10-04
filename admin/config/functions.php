@@ -92,20 +92,6 @@ if (!function_exists('clear_input_data')) {
         }
     }
 }
-
-// if (!function_exists('set_active')) {
-//     function set_active($file, $class = 'active')
-//     {
-//         $page = array_pop(explode('/', $_SERVER['SCRIPT_NAME']));
-
-//         if ($page == $file . 'php') {
-//             return $class;
-//         } else {
-//             return ""; 
-//         }
-//     }
-// }
-
 if (!function_exists('get_session')) {
     function get_session($key)
     {
@@ -147,7 +133,7 @@ if (!function_exists('redirect_guest_filter')) {
     {
         auth_filter();
         if (isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['level'])) {
-            header('Location: '. $page . '.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
+            header('Location: '. $page . '.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
             exit();
         }
     }
@@ -158,7 +144,7 @@ if (!function_exists('redirect_the_user')) {
         if (!empty($_GET['id']) || !empty($_GET['username'])) {
             $username  = find_user_by_id($_SESSION['id'],'t_admins');
             if (!$username) {
-                redirect('index.php');
+                redirect('login.view.php');
             }
         } else {
             guest_filter($to);
@@ -168,7 +154,7 @@ if (!function_exists('redirect_the_user')) {
 if(!function_exists('auth_filter')){
     function auth_filter(){
         if(!isset($_SESSION['id']) && !isset($_SESSION['username'])){
-            header('Location:index.php');
+            header('Location:login.view.php');
             exit();
         }
     }
