@@ -43,7 +43,7 @@ require '../processing/home.process.php';
                     <img src="../img/posts_img/<?=$data_home->thumbmail?>" alt="">
                 </div>
                 <div class="post_info">
-                    <a href="" class="category_button"><?=$data_home->category?></a>
+                    <a href="category-posts.view.php?category=<?=$data_home->category?>" class="category_button"><?=$data_home->category?></a>
                     <h3 class="post_title"><?=$data_home->title?></h3>
                     <p class="post_body">
                     <?=substr($data_home->body, 0,200).'...'?>
@@ -63,19 +63,10 @@ require '../processing/home.process.php';
 
         </div>
     </section>
-
-    <section class="category_buttons">
-        <div class="container category_buttons-container">
-            <a href="" class="category_button">Art</a>
-            <a href="" class="category_button">Wild Life</a>
-            <a href="" class="category_button">Travel</a>
-            <a href="" class="category_button">Science & Technology</a>
-            <a href="" class="category_button">Food</a>
-            <a href="" class="category_button">Music</a>
-        </div>
-    </section>
-
-    <?php include '../partials/footer.php'?>
+    <?php 
+    require '../partials/categories.php';
+    require '../partials/footer.php';
+    ?>
 </body>
 
 </html>

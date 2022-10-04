@@ -162,19 +162,11 @@ require '../processing/blog.process.php';
             </article>
         </div>
     </section>
-
-    <section class="category_buttons">
-        <div class="container category_buttons-container">
-            <a href="" class="category_button">Art</a>
-            <a href="" class="category_button">Wild Life</a>
-            <a href="" class="category_button">Travel</a>
-            <a href="" class="category_button">Science & Technology</a>
-            <a href="" class="category_button">Food</a>
-            <a href="" class="category_button">Music</a>
-        </div>
-    </section>
-
-    <?php require '../partials/footer.php'?>
+    
+    <?php 
+    require '../partials/categories.php';
+    require '../partials/footer.php';
+    ?>
 </body>
 
 </html>

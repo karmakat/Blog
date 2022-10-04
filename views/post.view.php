@@ -1,11 +1,11 @@
-<?php include 'partials/header.php'?>
+<?php include '../partials/header.php'?>
 
     <section class="singlepost">
         <div class="container singlepost_container">
             <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
             <div class="post_author">
                 <div class="post_author-avatar">
-                    <img src="img/avatar.jpg" alt="">
+                    <img src="../img/avatar.jpg" alt="">
                 </div>
                 <div class="post_author-info">
                     <h5>By: Bethel Kami</h5>
@@ -14,7 +14,7 @@
             </div>
 
             <div class="singlepost_thumbmail">
-                <img src="img/6.jpg" alt="">
+                <img src="../img/6.jpg" alt="">
             </div>
         
         <p>
@@ -32,7 +32,7 @@
     </div>
     </section>
 
-    <?php include 'partials/footer.php'?>
+    <?php require '../partials/footer.php'?>
 </body>
 
 </html>
