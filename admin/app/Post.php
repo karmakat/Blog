@@ -1,7 +1,7 @@
 <?php
 require '../../app/Publics.php';
 
-class Post
+class Post extends SignUp
 {
     public $dbcon = Publics::getPDO();
 

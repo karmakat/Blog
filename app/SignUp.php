@@ -15,6 +15,11 @@ class SignUp{
             $array [] = $message;
         }
     }
+    function check_mail($value,$message,$array){
+        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        $array[] = $value .' '. $message;
+        }
+    }
 
     // Check if the username is already in use
     function is_already_in_use($field, $value, $table)
@@ -38,6 +43,10 @@ class SignUp{
         $stmt = $this->dbcon->prepare($mysql);
         $stmt->execute([$elements]);
     }
-
-
+    // Delete
+    function delete($table,$field,$value){
+        $mysql = "DELETE FROM $table WHERE $field = ?";
+        $stmt = $this->dbcon->prepare($mysql);
+        $stmt->execute([$value]);
+    }
 }
