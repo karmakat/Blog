@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_GET['title'])) {
     $title = $_GET['title'];
     // Check if the isset exist in the database

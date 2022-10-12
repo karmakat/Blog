@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 try {
     if (isset($_GET['title'])) {
         // Check if the title exist

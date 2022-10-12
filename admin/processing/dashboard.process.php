@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!empty($_GET['id']) || !empty($_GET['username'] || !empty($_GET['level']))){
    $username  = find_user_by_id($_SESSION['id'],'t_admins');
     if(!$username){

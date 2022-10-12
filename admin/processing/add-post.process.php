@@ -1,4 +1,5 @@
 <?php
+session_start();
 redirect_the_user('add-post');
 
 // Select all categories

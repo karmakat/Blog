@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_GET['username'])) {
     // Get the username provided in GET
     $username = $_GET['username'];
