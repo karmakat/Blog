@@ -60,3 +60,5 @@ if (isset($_GET['username'])) {
     header('Location: ../views/manage-users.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
     exit();
 }
+
+require '../views/edit-user.view.php';

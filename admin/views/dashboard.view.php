@@ -1,6 +1,5 @@
 <?php
 require '../partials/header.php';
-require '../processing/dashboard.process.php';
 ?>
 <section class="dashboard">
     <div class="container dashboard_container">

@@ -91,3 +91,4 @@ try {
 } catch (Exception $e) {
     echo 'Registration Error ' . $e->getMessage();
 }
+require '../views/add-user.view.php';

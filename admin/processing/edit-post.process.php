@@ -78,3 +78,4 @@ try {
 } catch (Exception $e) {
     echo "Initial Error : " . $e->getMessage();
 }
+require '../views/edit-post.view.php';

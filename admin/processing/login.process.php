@@ -29,13 +29,13 @@ try {
                         $_SESSION['level'] = $query_result->level;
 
                         $page = 'update-password';
-                        header('Location: '. $page . '.view.php?id=' . $_SESSION['id']);
+                        header('Location: '. $page . '.process.php?id=' . $_SESSION['id']);
                     } else if($query_result->status == 1){
                         $_SESSION['id'] = $query_result->id;
                         $_SESSION['username'] = $query_result->username;
                         $_SESSION['level'] = $query_result->level;
                         $page = 'dashboard';
-                        header('Location: '.$page.'.view.php?id=' . $_SESSION['id'].'username='. $_SESSION['username'].'level='.$_SESSION['level']);
+                        header('Location: '.$page.'.process.php?id=' . $_SESSION['id'].'username='. $_SESSION['username'].'level='.$_SESSION['level']);
                         exit();
                     }
                 }
@@ -53,3 +53,4 @@ try {
 } catch (Exception $e) {
     echo 'Authentification error :' . $e->getMessage();
 }
+require '../views/login.view.php';

@@ -64,3 +64,4 @@ if (isset($_GET['id']) == $_SESSION['id']) {
     $page = 'update-password';
     header('Location: ' . $page . '.view.php?id=' . $_SESSION['id']);
 }
+require '../views/update-password.view.php';

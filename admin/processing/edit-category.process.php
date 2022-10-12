@@ -53,3 +53,4 @@ if (isset($_GET['title'])) {
     header('Location: ../views/manage-categories.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
     exit();
 }
+require '../views/edit-category.view.php';

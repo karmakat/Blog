@@ -45,3 +45,4 @@ try {
 } catch (Exception $e) {
     echo "Adding Error : " . $e->getMessage();
 }
+require '../views/add-category.view.php';

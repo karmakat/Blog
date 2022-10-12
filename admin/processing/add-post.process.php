@@ -64,3 +64,4 @@ if (isset($_POST['add'])) {
 } else {
     clear_input_data();
 }
+require '../views/add-post.view.php';
