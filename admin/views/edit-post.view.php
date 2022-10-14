@@ -1,6 +1,5 @@
 <?php
 require '../partials/header.php';
-require '../processing/edit-post.process.php';
 ?>
 
 <section class="form_section">

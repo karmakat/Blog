@@ -1,5 +1,7 @@
 <?php
 session_start();
+require '../config/database.php';
+require '../config/functions.php';
 redirect_the_user('add-post');
 
 // Select all categories
@@ -52,7 +54,7 @@ if (isset($_POST['add'])) {
                     $stmt->execute([$title, $body, $category, $created_by, $thumbmail_name]);
 
                     set_flash($created_by . " your post was been addeed", "success");
-                    header('Location: dashboard.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+                    header('Location: dashboard.process.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
                     exit();
                 }
             }

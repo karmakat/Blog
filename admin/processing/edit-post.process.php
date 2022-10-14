@@ -1,5 +1,7 @@
 <?php
 session_start();
+require '../config/database.php';
+require '../config/functions.php';
 try {
     if (isset($_GET['title'])) {
         // Check if the title exist
@@ -68,11 +70,11 @@ try {
                 clear_input_data();
             }
         } else {
-            header('Location: ../views/dashboard.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+            header('Location: dashboard.process.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
             exit();
         }
     } else {
-        header('Location: ../dashboard.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
+        header('Location: dashboard.process.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'] . 'level=' . $_SESSION['level']);
         exit();
     }
 } catch (Exception $e) {

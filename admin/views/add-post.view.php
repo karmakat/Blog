@@ -1,6 +1,5 @@
 <?php 
 require '../partials/header.php';
-require '../processing/add-post.process.php';
 ?>
     <section class="form_section">
         <div class="container form_section-container">

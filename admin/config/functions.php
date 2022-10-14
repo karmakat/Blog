@@ -133,7 +133,7 @@ if (!function_exists('redirect_guest_filter')) {
     {
         auth_filter();
         if (isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['level'])) {
-            header('Location: '. $page . '.view.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
+            header('Location: '. $page . '.process.php?id=' . $_SESSION['id'] . 'username=' . $_SESSION['username'].'level='.$_SESSION['level']);
             exit();
         }
     }
@@ -144,7 +144,7 @@ if (!function_exists('redirect_the_user')) {
         if (!empty($_GET['id']) || !empty($_GET['username'])) {
             $username  = find_user_by_id($_SESSION['id'],'t_admins');
             if (!$username) {
-                redirect('login.view.php');
+                redirect('login.process.php');
             }
         } else {
             guest_filter($to);
@@ -154,7 +154,7 @@ if (!function_exists('redirect_the_user')) {
 if(!function_exists('auth_filter')){
     function auth_filter(){
         if(!isset($_SESSION['id']) && !isset($_SESSION['username'])){
-            header('Location:login.view.php');
+            header('Location:login.process.php');
             exit();
         }
     }

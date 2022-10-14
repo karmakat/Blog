@@ -31,7 +31,7 @@ require '../partials/header.php';
                         <tr>
                             <td><?= $data->title ?></td>
                             <td><?= $data->category ?></td>
-                            <td><a href="edit-post.view.php?title=<?= $data->title ?>" class="btn sm">Edit</a></td>
+                            <td><a href="edit-post.process.php?title=<?= $data->title ?>" class="btn sm">Edit</a></td>
                             <td><a href="../processing/delete-post.process.php?title=<?= $data->title ?>" class="btn sm danger">Delete</a></td>
                         </tr>
                     <?php } ?>

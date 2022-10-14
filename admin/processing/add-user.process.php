@@ -1,5 +1,7 @@
 <?php
 session_start();
+require '../config/database.php';
+require '../config/functions.php';
 redirect_the_user('add-user');
 try {
     if (isset($_POST['submit'])) {

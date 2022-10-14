@@ -1,19 +1,19 @@
 <aside>
                 <ul>
                     <li>
-                        <a href="add-post.view.php"><i class="icon-pencil-square-o"></i>
+                        <a href="add-post.process.php"><i class="icon-pencil-square-o"></i>
                             <h5>Add Post</h5>
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.view.php" class="active"><i class="icon-dashboard2"></i>
+                        <a href="dashboard.process.php" class="active"><i class="icon-dashboard2"></i>
                             <h5>Manage Posts</h5>
                         </a>
                     </li>
                     <?php
                         $aside_ad_user = '
                         <li>
-                        <a href="add-user.view.php"><i class="icon-user-plus"></i>
+                        <a href="add-user.process.php"><i class="icon-user-plus"></i>
                             <h5>Add Users</h5>
                          </a>
                         </li>
@@ -21,7 +21,7 @@
                         ';
                         $aside_manage_user = '
                         <li>
-                        <a href="manage-users.view.php"><i class="icon-users"></i>
+                        <a href="manage-users.process.php"><i class="icon-users"></i>
                             <h5>Manage Users</h5>
                         </a>
                         </li>
@@ -36,12 +36,12 @@
                     
                     
                     <li>
-                        <a href="add-category.view.php"><i class="icon-th-list"></i>
+                        <a href="add-category.process.php"><i class="icon-th-list"></i>
                             <h5>Add Category</h5>
                         </a>
                     </li>
                     <li>
-                        <a href="manage-categories.view.php"><i class="icon-th"></i>
+                        <a href="manage-categories.process.php"><i class="icon-th"></i>
                             <h5>Manage Categories</h5>
                         </a>
                     </li>
